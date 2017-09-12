@@ -18,6 +18,7 @@ The original project was created by Andrew Rissing at CodeProject.com. Adam Chev
     <NeutralLanguage>en-001</NeutralLanguage>
     <PackageId>GenericParsing.Standard</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
