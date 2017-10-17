@@ -1,6 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{936F8079-8AE8-4F7A-921C-9E44920F4B9E}"
 	ProjectSection(SolutionItems) = preProject
@@ -39,6 +40,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B34CA031-46E6-4F67-A18F-7CE3E9C37954}
+		SolutionGuid = {7A378532-1A76-43DF-96B3-C94FB6474C1B}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenericParsing.vsmdi

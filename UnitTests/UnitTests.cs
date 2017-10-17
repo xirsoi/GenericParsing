@@ -303,6 +303,64 @@ namespace GenericParsing.UnitTests
                         Assert.AreEqual(intArray[i], gp.ColumnWidths[i]);
                 }
             }
+
+            [TestMethod]
+            public void ExpectedColumnCountExceptionAtEndOfRowAndFileRowNumber()
+            {
+                string inputData = @"A;B;C;""D; "";E
+4150000480; 0001; 1; A; 807D
+""da""; ""ta""; """"; ""data""; ""data""; ""data""";
+
+                using (StringReader sr = new StringReader(inputData))
+                using (GenericParserAdapter parser = new GenericParserAdapter(sr))
+                {
+                    parser.ColumnDelimiter = ';';
+                    parser.SkipStartingDataRows = 0;
+                    parser.IncludeFileLineNumber = true;
+                    parser.MaxBufferSize = 4096;
+                    parser.TextQualifier = '\"';
+                    parser.ExpectedColumnCount = 5;
+
+                    try
+                    {
+                        parser.GetDataTable();
+                        Assert.Fail();
+                    }
+                    catch (ParsingException ex)
+                    {
+                        Assert.AreEqual(2, ex.FileRowNumber);
+                    }
+                }
+            }
+
+            [TestMethod]
+            public void ExpectedColumnCountExceptionInMiddleOfRowAndFileRowNumber()
+            {
+                string inputData = @"A;B;C;""D; "";E
+4150000480; 0001; 1; A; 807D
+""da""; ""ta""; """"; ""data""; ""data""; ""data""; ""data""";
+
+                using (StringReader sr = new StringReader(inputData))
+                using (GenericParserAdapter parser = new GenericParserAdapter(sr))
+                {
+                    parser.ColumnDelimiter = ';';
+                    parser.SkipStartingDataRows = 0;
+                    parser.IncludeFileLineNumber = true;
+                    parser.MaxBufferSize = 4096;
+                    parser.TextQualifier = '\"';
+                    parser.ExpectedColumnCount = 5;
+
+                    try
+                    {
+                        parser.GetDataTable();
+                        Assert.Fail();
+                    }
+                    catch (ParsingException ex)
+                    {
+                        Assert.AreEqual(2, ex.FileRowNumber);
+                    }
+                }
+            }
         }
 
         [TestClass]
@@ -913,6 +971,33 @@ namespace GenericParsing.UnitTests
                     Assert.IsTrue(gp.FirstRowHasHeader);
 
                     using (StringReader sr = new StringReader("a,b,c,d"))
+                    {
+                        gp.SetDataSource(sr);
+
+                        using (DataTable dt = gp.GetDataTable())
+                        {
+                            Assert.IsNotNull(dt);
+                            Assert.AreEqual(4, dt.Columns.Count);
+                            Assert.AreEqual("a", dt.Columns[0].ColumnName);
+                            Assert.AreEqual("b", dt.Columns[1].ColumnName);
+                            Assert.AreEqual("c", dt.Columns[2].ColumnName);
+                            Assert.AreEqual("d", dt.Columns[3].ColumnName);
+                            Assert.AreEqual(0, dt.Rows.Count);
+                        }
+                    }
+                }
+            }
+
+            [TestMethod]
+            public void HeaderRowWithoutDataWithNewLine()
+            {
+                using (GenericParserAdapter gp = new GenericParserAdapter())
+                {
+                    gp.FirstRowHasHeader = true;
+
+                    Assert.IsTrue(gp.FirstRowHasHeader);
+
+                    using (StringReader sr = new StringReader("a,b,c,d\r\n"))
                     {
                         gp.SetDataSource(sr);
 
