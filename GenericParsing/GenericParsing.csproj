@@ -2,14 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <Authors>Andrew Rissing et. al.</Authors>
     <Company />
     <Product />
-    <Description>This assembly contains tools to aid in parsing flat files.
-
-The original project was created by Andrew Rissing at CodeProject.com. Adam Chevalier ported the library to .Net Standard 2.0 in September 2017.</Description>
-    <Copyright>2012 Andrew Rissing</Copyright>
+	  <summary>GenericParsing.Standard is a .Net Standard 2.0 port of Andrew Rissing's GenericParser library.</summary>
+    <Description>GenericParsing.Standard is a .Net Standard 2.0 port of Andrew Rissing's GenericParser library, which is a robust C# implementation of a parser for delimited and fixed width format files.  It provides a variety of features (ex. custom delimiters, text qualifiers, loading/saving configuration from XML, and many more), performant, and thoroughly tested.</Description>
+    <Copyright>2017 Andrew Rissing</Copyright>
     <PackageProjectUrl>https://github.com/xirsoi/GenericParsing</PackageProjectUrl>
     <RepositoryUrl>https://github.com/xirsoi/GenericParsing</RepositoryUrl>
     <PackageLicenseUrl>https://www.codeproject.com/info/cpol10.aspx</PackageLicenseUrl>
@@ -18,7 +17,12 @@ The original project was created by Andrew Rissing at CodeProject.com. Adam Chev
     <NeutralLanguage>en-001</NeutralLanguage>
     <PackageId>GenericParsing.Standard</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>1.4.1.0</AssemblyVersion>
+    <FileVersion>1.4.1.0</FileVersion>
+    <PackageReleaseNotes>1.4.1
+- Imported updates from upstream.
+- Removed ancient legacy code.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
